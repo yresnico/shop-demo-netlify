@@ -15,7 +15,7 @@ function Product(props) {
         
         <div className="Product">
             {productList[id - 1].title ? <h1>{productList[id - 1].title}</h1>: null}
-            {productList[id - 1].images[0] ? <Image className="d-block" fluid src={productList[id - 1].images[0]} /> : null}
+            {productList[id - 1].images[0] ? <Image className="d-block " fluid src={productList[id - 1].images[0]} /> : null}
             {productList[id - 1].price ? <span>Price: ${productList[id - 1].price.toLocaleString()}</span>: null} 
             <ProductAddForm productList={props.productList} id={id} addToCart={props.addToCart} />
         </div>
