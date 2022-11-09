@@ -1,5 +1,6 @@
 import {Formik, Field, Form, ErrorMessage} from 'formik';
 import React from 'react';
+import { Button } from 'react-bootstrap';
 function ProductAddForm(props) {
     function validateNumToAdd(value) {
         let error;
@@ -24,6 +25,7 @@ function ProductAddForm(props) {
         actions.resetForm();
       }}
     >
+            {({values}) => (
       <Form className="ProductAddForm mt-2" >
         <label htmlFor="numToAdd">Amount</label>
         {' '}
@@ -33,11 +35,13 @@ function ProductAddForm(props) {
         validate={validateNumToAdd} 
         required/>
         {' '}
-        <button type="submit">Submit</button>
+        <output>${(((Number.isInteger(Number(values.numToAdd)) && Number(values.numToAdd) > 0) ? values.numToAdd : 0) * props.productList[values.id-1].price).toLocaleString()}</output>
+        {' '}
+        <Button variant='primary' type="submit">Add to Cart</Button>
         <div className="d-block text-danger">
           <ErrorMessage name="numToAdd"/>
         </div> 
-      </Form>
+      </Form>)}
     </Formik>
     )
 }
