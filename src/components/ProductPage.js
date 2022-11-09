@@ -2,6 +2,7 @@ import ProductTd from './ProductLi';
 import {useState} from 'react'
 import Pagination from 'react-bootstrap/Pagination';
 import React from 'react';
+import './ProductPage.css'
 function ProductPage(props) {
     const perPage = 10
     const productList = props.productList;
@@ -30,7 +31,7 @@ function ProductPage(props) {
         return (
             <>
             <h1>Products</h1>
-            <table className='table'>
+            <table className='table ProductPage'>
                 <thead>
                     <tr>
                         <th>Product</th>
