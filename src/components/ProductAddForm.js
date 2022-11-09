@@ -19,19 +19,24 @@ function ProductAddForm(props) {
       }}
       onSubmit={ (values, actions) => {
         props.addToCart(values.id, Number(values.numToAdd));
-        alert(`Added ${values.numToAdd} ${props.productList[values.id -1].title} to cart`)
+        alert(`Added ${values.numToAdd} ${props.productList[values.id -1].title}${values.numToAdd > 1? 's': ''} to cart.\n` +
+        `Total price of added products is $${(values.numToAdd * props.productList[values.id -1].price).toLocaleString()}`);
         actions.resetForm();
       }}
     >
       <Form className="ProductAddForm mt-2" >
         <label htmlFor="numToAdd">Amount</label>
+        {' '}
         <Field id="numToAdd" 
         name="numToAdd" 
         placeholder="" 
         validate={validateNumToAdd} 
         required/>
-        <ErrorMessage name="numToAdd"/>
+        {' '}
         <button type="submit">Submit</button>
+        <div className="d-block text-danger">
+          <ErrorMessage name="numToAdd"/>
+        </div> 
       </Form>
     </Formik>
     )

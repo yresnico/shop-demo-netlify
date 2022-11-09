@@ -1,6 +1,7 @@
-import { Button } from "react-bootstrap";
+import CartRemoveButton from "./CartRemovalButton";
 import ProductTd from "./ProductLi";
 import React from "react";
+import './Cart.css';
 function Cart(props) {
     const products = props.inCart;
     const productList = props.productList;
@@ -47,14 +48,7 @@ function Cart(props) {
                                 />
                                 <td>{products.get(productID)}</td>
                                 <td>${(Number(products.get(productID)) * Number(productList[productID - 1].price)).toLocaleString()}</td>
-                                <td><Button 
-                                    variant="danger" 
-                                    type="button" 
-                                    onClick={()=> props.removeFromCart(productID)}
-                                    >
-                                        Delete
-                                    </Button>
-                                </td>
+                                <CartRemoveButton removeFromCart={props.removeFromCart} productID={productID}/> 
                             </tr>
                         </>
                     ))

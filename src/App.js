@@ -42,13 +42,13 @@ function App() {
   } 
  
   return (
-    <>
+    <div className='w-75 mx-auto'>
       <Navigation 
       removeFromCart={removeFromCart} 
       addToCart={addToCart} 
       inCart={inCart} 
       productList={productList}/> 
-    </>
+    </div>
   );
 }
 

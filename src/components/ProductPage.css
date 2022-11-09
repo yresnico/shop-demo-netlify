@@ -1,0 +1,5 @@
+@media screen and (min-width: 1000px) {
+    .ProductPage tbody tr{
+        height: 7vh;
+    }
+}
