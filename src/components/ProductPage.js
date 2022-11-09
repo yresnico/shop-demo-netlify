@@ -1,6 +1,7 @@
 import ProductTd from './ProductLi';
 import {useState} from 'react'
 import Pagination from 'react-bootstrap/Pagination';
+import React from 'react';
 function ProductPage(props) {
     const perPage = 10
     const productList = props.productList;

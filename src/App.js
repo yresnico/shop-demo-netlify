@@ -1,7 +1,8 @@
 import './App.css';
 import Navigation from './components/Navigation';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import {useState, useEffect} from 'react';
+import React from 'react';
 function App() {
   const [productList, setProductList] = useState([]);
   const [inCart, setInCart] = useState(new Map());

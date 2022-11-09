@@ -8,6 +8,7 @@ import ShopHome from './ShopHome';
 import Product from './Product';
 import ProductPage from './ProductPage';
 import Cart from './Cart';
+import React from 'react';
 
 function Navigation(props) {
     return (

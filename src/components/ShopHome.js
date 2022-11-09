@@ -1,3 +1,4 @@
+import React from "react";
 function ShopHome(props) {
     return (
         <div className="ShopHome">
