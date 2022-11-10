@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {useState, useEffect} from 'react';
 import React from 'react';
 function App() {
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState(new Map());
   const [inCart, setInCart] = useState(new Map());
 
   function addToCart(id, toAdd=1) {
@@ -23,8 +23,12 @@ function App() {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        setProductList(data.products);
-      }).catch(err => {
+        const prods = new Map(
+          data.products.map(product => [product.id, product])
+        )
+        setProductList(prods);
+      })
+      .catch(err => {
         console.log(err)
       })
   }, [])

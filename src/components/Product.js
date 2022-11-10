@@ -14,9 +14,10 @@ function Product(props) {
     return (
         
         <div className="Product">
-            {productList[id - 1].title ? <h1>{productList[id - 1].title}</h1>: null}
-            {productList[id - 1].images[0] ? <Image className="d-block " fluid src={productList[id - 1].images[0]} /> : null}
-            {productList[id - 1].price ? <span>Price: ${productList[id - 1].price.toLocaleString()}</span>: null} 
+            {productList.get(Number(id)).title ? <h1>{productList.get(Number(id)).title}</h1>: null}
+            {productList.get(Number(id)).thumbnail ? <Image className="d-block " fluid src={productList.get(Number(id)).thumbnail} /> : null}
+            {productList.get(Number(id)).description ? <p>{productList.get(Number(id)).description}</p>: null}
+            {productList.get(Number(id)).price ? <span>Price: ${productList.get(Number(id)).price.toLocaleString()}</span>: null} 
             <ProductAddForm productList={props.productList} id={id} addToCart={props.addToCart} />
         </div>
     )

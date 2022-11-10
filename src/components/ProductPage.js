@@ -5,7 +5,7 @@ import React from 'react';
 import './ProductPage.css'
 function ProductPage(props) {
     const perPage = 10
-    const productList = props.productList;
+    const productList = [...props.productList.values()];
     const totalPages = Math.ceil(productList.length / perPage)
     const [page, setPage] = useState(1)
     let items = [];
@@ -39,7 +39,7 @@ function ProductPage(props) {
                     </tr>
                 </thead>
                 <tbody>
-                {productList.map(product => {return (page * 10 - 10 < product.id  && product.id <= page * 10) ? (<tr key={product.id}> <ProductTd  id={product.id} title={product.title} price={product.price} /></tr>) : null}
+                {productList.map(product => {return (page * 10 - 10 < product.id  && product.id <= page * 10) ? (<tr key={product.id}><ProductTd  id={product.id} title={product.title} price={product.price} /></tr>) : null}
                 )}
                 </tbody>
             </table>

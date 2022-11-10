@@ -20,8 +20,8 @@ function ProductAddForm(props) {
       }}
       onSubmit={ (values, actions) => {
         props.addToCart(values.id, Number(values.numToAdd));
-        alert(`Added ${values.numToAdd} ${props.productList[values.id -1].title}${values.numToAdd > 1? 's': ''} to cart.\n` +
-        `Total price of added products is $${(values.numToAdd * props.productList[values.id -1].price).toLocaleString()}`);
+        alert(`Added ${values.numToAdd} ${props.productList.get(Number([values.id])).title}${values.numToAdd > 1? 's': ''} to cart.\n` +
+        `Total price of added products is $${(values.numToAdd * props.productList.get(Number([values.id])).price).toLocaleString()}`);
         actions.resetForm();
       }}
     >
@@ -30,14 +30,13 @@ function ProductAddForm(props) {
         <label htmlFor="numToAdd">Amount</label>
         {' '}
         <Field id="numToAdd" 
+        type="number"
         name="numToAdd" 
         placeholder="" 
         validate={validateNumToAdd} 
         required/>
-        {' '}
-        <output>${(((Number.isInteger(Number(values.numToAdd)) && Number(values.numToAdd) > 0) ? values.numToAdd : 0) * props.productList[values.id-1].price).toLocaleString()}</output>
-        {' '}
-        <Button variant='primary' type="submit">Add to Cart</Button>
+        <output className='ms-1'>${(((Number.isInteger(Number(values.numToAdd)) && Number(values.numToAdd) > 0) ? values.numToAdd : 0) * props.productList.get(Number([values.id])).price).toLocaleString()}</output>
+        <Button className='ms-3' variant='primary' type="submit">Add to Cart</Button>
         <div className="d-block text-danger">
           <ErrorMessage name="numToAdd"/>
         </div> 
